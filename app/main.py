@@ -1,6 +1,5 @@
 from flask import Flask, render_template, url_for, redirect, request, flash
-import datetime
-import os
+from .database.db_utils import connect_db, retrieve_data
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret key'
@@ -13,4 +12,8 @@ def home():
     return render_template("index.html")
 
 
-app.run(debug=True)
+@app.route("/entries", methods=["GET", "POST"])
+def entries():
+    """ some codes """
+    entries = retrieve_data(connect_db(), collection="entries")
+    return render_template("entries.html", entries=entries)

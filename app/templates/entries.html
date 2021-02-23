@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <title>Title</title>
+  </head>
+
+  <body>
+    <div class="entries">
+      <form action="/entries">
+        <input type="submit" value="Go to Entries" />
+      </form>
+    </div>
+    <div>
+      <ol>
+        <!-- For loop logic of jinja template -->
+        {%for i in entries%}
+
+        <li>{{i}}</li>
+        {%endfor%}
+      </ol>
+    </div>
+  </body>
+</html>
